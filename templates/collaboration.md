@@ -12,6 +12,19 @@
 - Issues move by: <!-- "dragging cards" and/or the exact helper command,
      e.g. `bun run scripts/triage-status.ts set <n> <slug>` -->
 
+## Board automation tokens
+
+<!-- Filled by /configure from its TOKENS.md guidance. -->
+
+- Repo owner type: <!-- organization | personal account -->
+- Strategy: <!-- org fine-grained PAT | ladder rung (a)/(b)/(c) with the
+     consequences accepted, e.g. "(b) two-token split: automation never
+     writes the board; promotions arrive as nudge comments; built-in
+     project workflows handle auto-add/status/archive" -->
+- Tokens: <!-- name → where stored (CI secret / 1Password), scopes -->
+- Doctor (re-run after ANY token change):
+  `PROJECT_OWNER=… PROJECT_NUMBER=… REPO=… BOARD_TOKEN=… <package-path>/scripts/board-doctor.sh`
+
 ## Canonical stage mapping
 
 | Canonical stage | Board column | Derived label | Owner |

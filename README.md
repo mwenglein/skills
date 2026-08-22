@@ -72,7 +72,7 @@ mattpocock/skills via the skills CLI:
 | --- | --- | --- |
 | `clarify` | business (dev-facilitated) | User-requirements grilling: personas, journeys, outcomes — never architecture |
 | `walkthrough` | both | Hands-on acceptance walkthrough of implemented tickets, one PR at a time, per-walker stamps |
-| `configure` | developers | One-time setup wizard: maps the canonical stages to your board, writes the two config files |
+| `configure` | developers | One-time setup wizard: maps the canonical stages to your board, writes the two config files, and picks the right token strategy — including the [personal-account ladder](skills/collaboration/configure/TOKENS.md) where fine-grained PATs can't reach user-owned boards. Ships `scripts/board-doctor.sh`, a read-only per-token capability probe |
 | `onboard-business` | developers | Builds the business team's web pack from your config and walks through provisioning |
 
 **Web skills** (`skills-web/`) — templates, built into self-contained
