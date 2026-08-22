@@ -81,6 +81,7 @@ Skills):
 
 | Skill | Stage | What it does |
 | --- | --- | --- |
+| `ask-mike` | any | The business-side `ask-matt`: routes a business user to the right skill and explains whose move it is at each stage |
 | `clarify` | Clarification | Same grilling, adapted to the GitHub connector; creates/annotates the issue |
 | `double-check` | Double-check | Plays the technical design back in business language; hunts misunderstandings before implementation |
 | `document` | Documentation | User docs drafted from what actually shipped, posted to the issue |

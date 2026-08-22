@@ -16,9 +16,11 @@ explain what is happening and why before doing it.
 
 Open by explaining, briefly and concretely:
 
-- The business team participates through **four web skills** built from
+- The business team participates through **five web skills** built from
   templates in this package, with this repo's facts (repo slug, board URL,
-  product name) baked in at build time.
+  product name) baked in at build time: the four stage skills plus
+  `ask-mike`, the router that tells a business user where they are in the
+  process and which skill fits.
 - The skills talk to GitHub through the chat product's **GitHub
   connector/MCP** — business users need GitHub accounts with issue
   read/write on this repo, but never touch code or branches.

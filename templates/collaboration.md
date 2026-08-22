@@ -43,7 +43,8 @@ Business and developers alternate; each stage has one owner:
 
 ## Web skill pack
 
-The business team's web skills are built from this repo's
+The business team's web skills (ask-mike, clarify, double-check, document,
+communicate) are built from this repo's
 `skills-web.config.json` by <!-- package path, e.g. vendor/skills -->
 `/scripts/build-web-skills.sh`. Rebuild and re-upload after any config or
 package update (`/onboard-business` walks through it).
