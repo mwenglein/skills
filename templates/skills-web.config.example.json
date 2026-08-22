@@ -1,0 +1,18 @@
+{
+  "REPO": "acme/product",
+  "BOARD_URL": "https://github.com/orgs/acme/projects/1",
+  "PRODUCT_NAME": "Acme Product",
+  "USER_EXAMPLE": "an account manager",
+  "ARCHITECTURE_DOCS": "docs/architecture",
+  "ADR_DOCS": "docs/adr",
+  "COL_CLARIFICATION": "Needs clarification",
+  "COL_DESIGN": "Needs design",
+  "COL_DOUBLE_CHECK": "Needs double-check",
+  "COL_AGENT_READY": "Ready for agent",
+  "COL_DOCUMENTATION": "Ready for documentation",
+  "COL_COMMUNICATION": "Ready to communicate",
+  "COL_RELEASE": "Ready for release",
+  "LABEL_DOUBLE_CHECK": "needs-double-check",
+  "LABEL_DOCUMENTATION": "ready-for-documentation",
+  "LABEL_COMMUNICATION": "ready-to-communicate"
+}

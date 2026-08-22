@@ -1,0 +1,20 @@
+{
+  "name": "mwenglein-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agent skills that integrate business users into agentic development - the collaboration layer around mattpocock/skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mwenglein/skills"
+  },
+  "license": "MIT",
+  "scripts": {
+    "changeset": "changeset",
+    "version": "changeset version",
+    "check": "./scripts/check-collisions.sh && ./scripts/build-web-skills.sh -c templates/skills-web.config.example.json -o dist/web-skills"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0",
+    "@changesets/changelog-github": "^0.7.0"
+  }
+}

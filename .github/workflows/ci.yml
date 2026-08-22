@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Skill name collisions vs upstream
+        run: ./scripts/check-collisions.sh
+      - name: Build web pack with the example config
+        run: ./scripts/build-web-skills.sh -c templates/skills-web.config.example.json -o dist/web-skills
+      - name: IDE skill frontmatter sanity
+        run: |
+          set -euo pipefail
+          fail=0
+          for f in skills/*/*/SKILL.md; do
+            dir=$(basename "$(dirname "$f")")
+            name=$(awk -F': ' '/^name:/ { print $2; exit }' "$f" | tr -d '\r')
+            desc=$(awk '/^description:/ { sub(/^description: /, ""); print; exit }' "$f" | tr -d '\r')
+            [ "$name" = "$dir" ] || { echo "FAIL $f: name '$name' != dir '$dir'"; fail=1; }
+            [ -n "$desc" ] || { echo "FAIL $f: missing description"; fail=1; }
+          done
+          [ "$fail" -eq 0 ] && echo "IDE skills OK"
