@@ -16,13 +16,14 @@ explain what is happening and why before doing it.
 
 Open by explaining, briefly and concretely:
 
-- The business team participates through **six web skills** built from
+- The business team participates through **seven web skills** built from
   templates in this package, with this repo's facts (repo slug, board URL,
   product name, setup contact) baked in at build time: the four stage
   skills, `ask-mike` — the router that tells a business user where they
-  are in the process and which skill fits — and `setup`, the first-run
+  are in the process and which skill fits — `setup`, the first-run
   preflight that gets a user from nothing (no GitHub account, no
-  connector) to a verified connection.
+  connector) to a verified connection, and `new-issue`, the intake front
+  door that slices what a user brings into right-sized issues.
 - The skills talk to GitHub through the chat product's **GitHub
   connector/MCP** — business users need GitHub accounts with issue
   read/write on this repo, but never touch code or branches. Users who
@@ -81,8 +82,9 @@ End by giving the developer a short pilot to run with one business user:
 0. The business user runs `setup` first — it self-tests their GitHub
    access and walks them from wherever they are (no account, no
    connector, no repo access) to a verified connection
-1. Pick a real, fuzzy feature idea → "clarify this idea" (`clarify`) —
-   issue appears in the clarification stage on the board
+1. Pick a real, fuzzy feature idea → file it with `new-issue` (watch it
+   slice), then "clarify issue #n" (`clarify`) — the issue appears and
+   moves through clarification on the board
 2. The design stage runs (developers grill and spec it, or `outline` in
    standalone mode) → business runs `double-check` on the result
 3. After the work ships: "what's waiting for documentation?" (`document`),

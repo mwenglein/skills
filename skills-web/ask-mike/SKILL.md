@@ -69,11 +69,12 @@ Off the main flow entirely:
 - **"Am I set up?" / first time here / GitHub errors** — run **setup**. It
   self-tests your GitHub access and fixes the connection step by step,
   even if you don't have a GitHub account yet.
-- **"Something is broken" / "I have a request"** — just create an issue on
-  `{{REPO}}` describing what you saw or need, in your own words. It lands
-  in triage automatically; if it needs your requirements input, it will
-  come back to you in {{COL_CLARIFICATION}} and `clarify` takes it from
-  there.
+- **"Something is broken" / "I have a request" / "here's a list of
+  things"** — run **new-issue**. It slices what you bring into
+  right-sized issues (one topic may split into several, a list may merge
+  into one), checks for duplicates, and lands everything in triage. When
+  an issue needs your requirements input, it comes back to you in
+  {{COL_CLARIFICATION}} and `clarify` takes it from there.
 - **"What's the status of X?"** — ask here; the issue's board column *is*
   the status, and it can be looked up for you along with the latest
   comments.
@@ -83,10 +84,14 @@ Off the main flow entirely:
   instead.
 - **"Which of these applies to me?"** — this skill. You're already here.
 
-## Two rules worth keeping
+## Three rules worth keeping
 
 1. **Facts are the agent's job, decisions are yours.** In every skill here,
    you should never be asked to look something up — only to decide.
 2. **The board is the source of truth.** When in doubt, open
    [the board]({{BOARD_URL}}) — the column answers "whose move is it?"
    better than any meeting.
+3. **You never need to memorize anything.** Every skill ends by telling
+   you your next move and the exact words to say when you're ready — one
+   line, one issue, a fresh session. If you've lost the thread anyway,
+   that's what this skill is for.

@@ -48,3 +48,4 @@ The session is done when the frontier is empty: every requirement branch visited
 1. Summarize the clarified requirements (problem, actors, journey, expectations, scope, out-of-scope, plus any parked design questions) and get the user's confirmation.
 2. **Existing issue**: post the summary as an issue comment under a `## Clarified requirements` heading. **No issue yet**: create one on `{{REPO}}` with the summary as the body.
 3. Remind the user to drag the card from **{{COL_CLARIFICATION}}** to **{{COL_DESIGN}}** on the [board]({{BOARD_URL}}) — {{DESIGN_ACTOR}} works out the design there, and the **double-check** skill brings the result back to you for confirmation.
+4. Name the user's next move without starting it: when the card reaches **{{COL_DOUBLE_CHECK}}**, say _"double-check issue #n"_ — one line, a fresh session. Nothing else is theirs to do until then.

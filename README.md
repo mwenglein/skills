@@ -109,6 +109,7 @@ Skills):
 | Skill | Stage | What it does |
 | --- | --- | --- |
 | `setup` | first run | Preflight for a completely new user: self-tests GitHub access through the connector and fixes it step by step — account creation, connector, repo invitation |
+| `new-issue` | intake | The front door: slices what the user brings into right-sized issues (one topic may split, a pasted list may merge), checks duplicates, lands everything in triage, then hands into `clarify` |
 | `ask-mike` | any | The business-side `ask-matt`: routes a business user to the right skill and explains whose move it is at each stage; sends broken connections to `setup` |
 | `clarify` | Clarification | Same grilling, adapted to the GitHub connector; creates/annotates the issue |
 | `double-check` | Double-check | Plays the technical design back in business language; hunts misunderstandings before implementation |

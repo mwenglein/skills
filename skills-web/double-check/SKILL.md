@@ -42,7 +42,7 @@ Dig into every hesitation — a "mostly" is a misunderstanding not yet found.
 
 Post the outcome as an issue comment under a `## Double-check` heading:
 
-- **Confirmed** — the explanation as delivered, the user's confirmation, and any small notes. Remind the user to drag the card from **{{COL_DOUBLE_CHECK}}** to **{{COL_AGENT_READY}}** on the [board]({{BOARD_URL}}) — {{AGENT_READY_ACTOR}} takes over from here.
-- **Misunderstandings found** — list each one: what the design says, what the user actually meant. Remind the user to drag the card back to **{{COL_DESIGN}}** so the design gets revised; the issue will return here for another pass.
+- **Confirmed** — the explanation as delivered, the user's confirmation, and any small notes. Remind the user to drag the card from **{{COL_DOUBLE_CHECK}}** to **{{COL_AGENT_READY}}** on the [board]({{BOARD_URL}}) — {{AGENT_READY_ACTOR}} takes over from here. Their own next move comes much later: when the card reaches **{{COL_DOCUMENTATION}}**, say _"document issue #n"_ — one line, a fresh session; in between they may be invited to a walkthrough, which the inviter arranges.
+- **Misunderstandings found** — list each one: what the design says, what the user actually meant. Remind the user to drag the card back to **{{COL_DESIGN}}** so the design gets revised; when the issue returns here, say _"double-check issue #n"_ again for the next pass.
 
 Never edit the spec yourself, and never soften a mismatch to avoid the bounce-back — a wrong feature costs far more than another design round.

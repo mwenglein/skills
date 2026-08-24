@@ -33,3 +33,4 @@ Then remind the user:
 
 - Drag the card from **{{COL_DOCUMENTATION}}** to **{{COL_COMMUNICATION}}** on the [board]({{BOARD_URL}}) — the **communicate** skill picks up there for release notes and announcements
 - Board moves are deliberate human steps from here on; automation never advances past documentation
+- Suggest the next step without starting it: communication deserves its own sitting, with fresh eyes on the approved text — when ready, say _"communicate issue #n"_ in a fresh session; never roll into it from here
