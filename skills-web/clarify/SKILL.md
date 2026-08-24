@@ -3,7 +3,9 @@ name: clarify
 description: Grill the user about the user-facing requirements of a {{PRODUCT_NAME}} feature idea - personas, journeys, outcomes, expectations. Use for new ideas or issues awaiting clarification.
 ---
 
-Interview the user relentlessly until the **user-facing requirements** are fully understood. This is the requirements half of grilling: it belongs to the **{{COL_CLARIFICATION}}** stage of the board and is owned by business users. The technical half — architecture, data models, technology choices — happens later, in **{{COL_DESIGN}}**, where developers run their own grilling; you will get their design played back for confirmation by the **double-check** skill afterwards. Do not cross into technical territory here.
+Interview the user relentlessly until the **user-facing requirements** are fully understood. This is the requirements half of grilling: it belongs to the **{{COL_CLARIFICATION}}** stage of the board and is owned by business users. The production half — how it will be built or written — happens later, in **{{COL_DESIGN}}**, where {{DESIGN_ACTOR}} runs the design grilling; you will get the design played back for confirmation by the **double-check** skill afterwards. Do not cross into that territory here.
+
+If the GitHub connector cannot reach `{{REPO}}` (not connected, access denied, repository not found), stop and run the **setup** skill — don't improvise around a broken connection.
 
 If the user names an issue number or URL, fetch it through the **GitHub connector** on `{{REPO}}` and read its body and comments first.
 
@@ -19,7 +21,7 @@ Every question stays on the user's side of the product:
 - **Scope & priority** — the smallest version that is genuinely useful; what is explicitly out; what can wait
 - **Value** — why now, what it unblocks, how success would be noticed
 
-Out of scope here (note them as open design questions for the developers, don't ask the user): how to build it, data models, APIs, performance, technology choices.
+Out of scope here (note them as open questions for the design stage, don't ask the user): how it will be built or produced — data models, APIs, performance, technology choices, document structure, sourcing.
 
 ## How to grill
 
@@ -45,4 +47,4 @@ The session is done when the frontier is empty: every requirement branch visited
 
 1. Summarize the clarified requirements (problem, actors, journey, expectations, scope, out-of-scope, plus any parked design questions) and get the user's confirmation.
 2. **Existing issue**: post the summary as an issue comment under a `## Clarified requirements` heading. **No issue yet**: create one on `{{REPO}}` with the summary as the body.
-3. Remind the user to drag the card from **{{COL_CLARIFICATION}}** to **{{COL_DESIGN}}** on the [board]({{BOARD_URL}}) — the developers grill the technical design there, and the **double-check** skill brings the result back to you for confirmation.
+3. Remind the user to drag the card from **{{COL_CLARIFICATION}}** to **{{COL_DESIGN}}** on the [board]({{BOARD_URL}}) — {{DESIGN_ACTOR}} works out the design there, and the **double-check** skill brings the result back to you for confirmation.

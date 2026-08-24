@@ -1,6 +1,6 @@
 ---
 name: walkthrough
-description: 'Guide a human acceptance walkthrough of implemented tickets, one PR at a time: sequence proposed up front to minimise module jumping, the PR branch checked out and running before each walk, results recorded on GitHub, passing issues stamped per walker.'
+description: 'Guide a human acceptance walkthrough of implemented tickets, one PR at a time: sequence proposed up front to minimise module jumping, the PR branch checked out and loaded (product running, or document rendered) before each walk, results recorded on GitHub, passing issues stamped per walker.'
 disable-model-invocation: true
 ---
 
@@ -28,13 +28,21 @@ Completion: a confirmed ordered list of ticket → PR pairs.
 Repeat for each ticket in order, finishing its close-out before opening the
 next.
 
-### Load the code
+### Load the artifact
 
-The product must run the code under review — a walkthrough on the wrong
-branch tests nothing. `gh pr checkout <pr>`, restart the product per the
-repo's dev-environment conventions, and confirm the running build picks the
-branch up before presenting any check. A merged PR is tested on `main` (or
-the environment it deployed to) instead.
+The walkthrough must exercise the artifact under review — a walkthrough on
+the wrong branch tests nothing. `gh pr checkout <pr>`, then per the kind of
+artifact:
+
+- **Product code**: restart the product per the repo's dev-environment
+  conventions and confirm the running build picks the branch up before
+  presenting any check.
+- **Documents** (standalone repos): open the changed documents in rendered
+  form; the walk is a guided read-through, and checks verify claims and
+  structure instead of clicks.
+
+A merged PR is tested on `main` (or the environment it deployed to)
+instead.
 
 ### Plan
 
@@ -43,8 +51,8 @@ the acceptance criteria), the PR body (Test plan section is primary
 material), and every referenced document — pull anything that reads like
 acceptance criteria, a testing checklist, or manual-validation notes. Distil
 a focused step-by-step list for this ticket only: each check names the route
-to open, the action, and the expected result, ordered so state built by one
-check flows into the next. A ticket with no discoverable criteria gets a
+to open (or the section to read), the action, and the expected result,
+ordered so state built by one check flows into the next. A ticket with no discoverable criteria gets a
 proposed list derived from the PR diff, confirmed by the user before testing.
 
 ### Walk
