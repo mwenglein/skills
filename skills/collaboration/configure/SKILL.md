@@ -18,22 +18,38 @@ files, not the skills:
 This is a prompt-driven skill, not a deterministic script. Explore, present
 what you found, confirm with the user, then write.
 
+## The two modes
+
+The pipeline runs in one of two modes, and **this skill is the only place
+modes exist** — every other skill just reads the mapping doc and speaks
+stage names, so switching modes later means re-running `/configure`, not
+touching any skill:
+
+- **full** — business and developers collaborate; mattpocock/skills is
+  installed alongside and owns the technical middle stages.
+- **standalone** — a document repo (strategy papers, decision records):
+  business decides, the agent produces the deliverables, and no developer
+  pack is installed. When developers arrive later, install
+  mattpocock/skills and re-run `/configure` — the board columns keep their
+  names; the middle stages just change occupants.
+
 ## The canonical stages
 
-The collaboration skills speak in canonical stage names. The mapping doc
-translates them to whatever the repo's board actually calls them:
+All nine stages exist in both modes; only the middle two change hands. The
+mapping doc translates the canonical names to whatever the repo's board
+actually calls them:
 
-| Canonical stage | Owner      | Skill there                     |
-| --------------- | ---------- | ------------------------------- |
-| triage          | maintainer | `triage` (mattpocock/skills)    |
-| clarification   | business   | `clarify`                       |
-| design          | developers | `grill-with-docs` → `to-spec`   |
-| double-check    | business   | `double-check`                  |
-| agent-ready     | developers | `to-tickets` → `implement`      |
-| review          | both       | `walkthrough`                   |
-| documentation   | business   | `document`                      |
-| communication   | business   | `communicate`                   |
-| release         | human      | (close on production release)   |
+| Canonical stage | Full mode (with mattpocock/skills)         | Standalone mode                     |
+| --------------- | ------------------------------------------ | ----------------------------------- |
+| triage          | maintainer — `triage`                      | maintainer — by hand                |
+| clarification   | business — `clarify`                       | business — `clarify`                |
+| design          | developers — `grill-with-docs` → `to-spec` | business + agent — `outline`        |
+| double-check    | business — `double-check`                  | business — `double-check`           |
+| agent-ready     | developers — `to-tickets` → `implement`    | agent — `draft`                     |
+| review          | both — `walkthrough`                       | both — `walkthrough` (read-through) |
+| documentation   | business — `document`                      | business — `document`               |
+| communication   | business — `communicate`                   | business — `communicate`            |
+| release         | human closes                               | human closes                        |
 
 ## Process
 
@@ -42,6 +58,12 @@ translates them to whatever the repo's board actually calls them:
 Read whatever exists; don't assume:
 
 - `git remote -v` — which GitHub repo is this?
+- **Mode evidence**: is mattpocock/skills installed (its skills — `triage`,
+  `grill-with-docs`, `to-spec` — present in the repo's skills folder, or
+  `docs/agents/issue-tracker.md` written by `setup-matt-pocock-skills`)?
+  Installed → recommend **full**. Absent → recommend **standalone**; a repo
+  of documents with no application code is standalone even if developers
+  hang around it.
 - **Owner type first**: is the repo owned by an **organization or a personal
   account** (`gh repo view --json owner --jq .owner`)? Everything about
   token strategy branches on this — see
@@ -62,14 +84,19 @@ Read whatever exists; don't assume:
 Lead each question with the recommended answer so the user can accept it in
 a word:
 
-1. **Board** — which project is the source of truth, and which column maps
+1. **Mode** — full or standalone, led by the evidence found above. On a
+   re-run where matt's skills have newly appeared, this is the headline
+   question: switching to full rewires the design and agent-ready stages
+   to the developer skills and nothing else.
+2. **Board** — which project is the source of truth, and which column maps
    to each canonical stage? Propose the mapping from the column names found;
    flag canonical stages with no column and ask whether to add a column or
    mark the stage as "not used" (skills for unused stages tell the user the
    stage is not configured).
-2. **How issues move** — dragged manually only, or does the repo have a
+3. **How issues move** — dragged manually only, or does the repo have a
    helper script / automation? Record the exact command if one exists.
-3. **Token strategy** — branch on the owner type established in step 1:
+4. **Token strategy** — branch on the owner type established during
+   exploration:
    - **Org-owned**: the happy path — one fine-grained PAT (org Projects
      read/write + repo Issues read/write + PR read). Recommend it and move
      on.
@@ -83,9 +110,13 @@ a word:
      → Workflows**, not Settings), (c) machine account for structural
      confinement, (d) move to an org as the exit. Let the user pick a rung;
      record the choice and its consequences in the collaboration doc.
-4. **Web-pack facts** — repo slug, board URL, product name, one example of a
-   typical end user (e.g. "a coach or analyst"), architecture-docs path,
-   ADR path.
+5. **Web-pack facts** — repo slug, board URL, product name, one example of
+   a typical end user (e.g. "a coach or analyst"), architecture-docs path,
+   ADR path, the **setup contact** (who a business user asks for repo
+   access — name plus handle or email), and the two **stage actors** the
+   web skills name for the middle stages: who works the design stage
+   (full: "the developers"; standalone: e.g. "the drafting agent") and who
+   works the agent-ready stage.
 
 ### 3. Confirm and write
 
@@ -124,3 +155,7 @@ re-run after **any** future token change.
 Tell the user which skills now read these files, and that the natural next
 step is `/onboard-business` — building and provisioning the business team's
 web skills from the config just written.
+
+In standalone mode, also name the exit ramp: when developers join and
+install mattpocock/skills, re-running `/configure` is the entire migration
+— same board, same columns, the middle stages change owners.

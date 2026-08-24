@@ -5,6 +5,8 @@ description: Draft user documentation for shipped {{PRODUCT_NAME}} features in t
 
 Draft user-facing documentation for features that have shipped and now wait in the **{{COL_DOCUMENTATION}}** column of the board. The announcement/marketing pass is a separate, later stage — that is the **communicate** skill's job, in **{{COL_COMMUNICATION}}**.
 
+If the GitHub connector cannot reach `{{REPO}}` (not connected, access denied, repository not found), stop and run the **setup** skill — don't improvise around a broken connection.
+
 ## Finding the queue
 
 List open issues on `{{REPO}}` with the label `{{LABEL_DOCUMENTATION}}` through the GitHub connector. That label is an automatically maintained mirror of the board column — reading it is fine, editing it is not.

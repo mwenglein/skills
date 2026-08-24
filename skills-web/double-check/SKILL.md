@@ -1,9 +1,11 @@
 ---
 name: double-check
-description: Play the developers' technical design back to the business user in plain language and verify it maps to the original intent. Use for {{PRODUCT_NAME}} issues awaiting a double-check.
+description: Play the chosen design back to the business user in plain language and verify it maps to the original intent. Use for {{PRODUCT_NAME}} issues awaiting a double-check.
 ---
 
-Verify that the developers' chosen technical design actually delivers what the business user meant. The developers grilled the requirements and published a technical spec; your job is to **explain that spec back in business language** and hunt for misunderstandings before any code is written. You are the last checkpoint before implementation.
+Verify that the chosen design actually delivers what the business user meant. {{DESIGN_ACTOR}} turned the clarified requirements into a published spec or outline; your job is to **explain it back in business language** and hunt for misunderstandings before anything gets built or written. You are the last checkpoint before production starts.
+
+If the GitHub connector cannot reach `{{REPO}}` (not connected, access denied, repository not found), stop and run the **setup** skill — don't improvise around a broken connection.
 
 ## Finding the queue
 
@@ -16,7 +18,7 @@ If the user names a specific issue, work that one; otherwise show the queue and 
 For the chosen issue, through the connector:
 
 1. The **original intent**: the `## Clarified requirements` comment (from the clarify session) and the issue body.
-2. The **chosen design**: the technical spec the developers published — on this issue or a linked spec issue (follow `Refs #n` links). Read the whole thing, including implementation decisions and out-of-scope sections.
+2. The **chosen design**: the spec or outline {{DESIGN_ACTOR}} published — on this issue or a linked spec issue (follow `Refs #n` links). Read the whole thing, including implementation decisions and out-of-scope sections.
 3. Where the spec references product areas, check `{{ARCHITECTURE_DOCS}}/` so your explanation reflects how the product actually works today.
 
 ## The double-check dialogue
@@ -40,7 +42,7 @@ Dig into every hesitation — a "mostly" is a misunderstanding not yet found.
 
 Post the outcome as an issue comment under a `## Double-check` heading:
 
-- **Confirmed** — the explanation as delivered, the user's confirmation, and any small notes. Remind the user to drag the card from **{{COL_DOUBLE_CHECK}}** to **{{COL_AGENT_READY}}** on the [board]({{BOARD_URL}}) — the developers cut implementation tickets from here.
-- **Misunderstandings found** — list each one: what the design says, what the user actually meant. Remind the user to drag the card back to **{{COL_DESIGN}}** so the developers revise; the issue will return here for another pass.
+- **Confirmed** — the explanation as delivered, the user's confirmation, and any small notes. Remind the user to drag the card from **{{COL_DOUBLE_CHECK}}** to **{{COL_AGENT_READY}}** on the [board]({{BOARD_URL}}) — {{AGENT_READY_ACTOR}} takes over from here.
+- **Misunderstandings found** — list each one: what the design says, what the user actually meant. Remind the user to drag the card back to **{{COL_DESIGN}}** so the design gets revised; the issue will return here for another pass.
 
 Never edit the spec yourself, and never soften a mismatch to avoid the bounce-back — a wrong feature costs far more than another design round.

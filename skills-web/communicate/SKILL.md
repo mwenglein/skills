@@ -5,6 +5,8 @@ description: Draft release notes, announcements, and marketing copy for document
 
 Draft the outward-facing communication for features that are already documented and now wait in the **{{COL_COMMUNICATION}}** column of the board — the last stop before **{{COL_RELEASE}}**.
 
+If the GitHub connector cannot reach `{{REPO}}` (not connected, access denied, repository not found), stop and run the **setup** skill — don't improvise around a broken connection.
+
 ## Finding the queue
 
 List open issues on `{{REPO}}` with the label `{{LABEL_COMMUNICATION}}` through the GitHub connector. That label is an automatically maintained mirror of the board column — reading it is fine, editing it is not.

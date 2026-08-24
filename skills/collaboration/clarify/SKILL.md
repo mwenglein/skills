@@ -3,7 +3,7 @@ name: clarify
 description: Grill the user about the user-facing requirements of a feature idea - personas, journeys, desired outcomes, expectations. Use for issues in the clarification stage, before any technical grilling.
 ---
 
-Interview the user relentlessly until the **user-facing requirements** are fully understood. This is the requirements half of grilling: it runs while an issue sits in the **clarification stage**, typically driven by a business user or product owner. The technical half — architecture, data models, technology choices — happens later, in the **design stage**, via `grill-me` or `grill-with-docs`. Do not cross into it here.
+Interview the user relentlessly until the **user-facing requirements** are fully understood. This is the requirements half of grilling: it runs while an issue sits in the **clarification stage**, typically driven by a business user or product owner. The production half — how it will be built or written: architecture, data models, technology choices, document structure and sourcing — happens later, in the **design stage**, via whatever skill the collaboration doc names there (`grill-with-docs` in full mode, `outline` in standalone mode). Do not cross into it here.
 
 The repo's collaboration conventions (stage names, board, how to move issues) should have been provided to you — see `docs/agents/collaboration.md`. If they are missing, tell the user to run `/configure` first.
 
@@ -19,7 +19,7 @@ Every question stays on the user's side of the product:
 - **Scope & priority** — the smallest version that is genuinely useful; what is explicitly out; what can wait
 - **Value** — why now, what it unblocks, how success would be noticed
 
-Out of scope here (park them for the design-stage grilling, don't ask the user): how to build it, data models, APIs, performance budgets, technology choices.
+Out of scope here (park them for the design-stage grilling, don't ask the user): how it will be built or produced — data models, APIs, performance budgets, technology choices, document structure, sourcing.
 
 ## How to grill
 
@@ -45,4 +45,4 @@ The session is done when the frontier is empty: every requirement branch visited
 
 1. Summarize the clarified requirements (problem, actors, journey, expectations, scope, out-of-scope) and get the user's confirmation.
 2. Capture the summary on the issue — post it as a comment under a `## Clarified requirements` heading (or update the issue body if the user prefers). If there is no issue yet, create one with the summary as the body.
-3. Hand off to the **design stage** per the repo's conventions — the developers grill the technical design there, and the business user gets the result played back by `double-check` afterwards.
+3. Hand off to the **design stage** per the repo's conventions — whoever the collaboration doc says owns that stage grills the approach there, and the business user gets the result played back by `double-check` afterwards.

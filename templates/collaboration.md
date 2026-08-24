@@ -5,6 +5,12 @@
      live. The collaboration skills read this at runtime and never hardcode
      stage names, board URLs, or repo slugs. -->
 
+## Mode
+
+- Collaboration mode: <!-- full (business + developers; mattpocock/skills
+     installed alongside) | standalone (document repo — business decides,
+     the agent produces the deliverables; no developer pack installed) -->
+
 ## The board
 
 - Project: <!-- board URL -->
@@ -27,23 +33,31 @@
 
 ## Canonical stage mapping
 
-| Canonical stage | Board column | Derived label | Owner |
-| --------------- | ------------ | ------------- | ----- |
-| triage          | <!-- --> | <!-- --> | maintainer |
-| clarification   | <!-- --> | <!-- --> | business   |
-| design          | <!-- --> | <!-- --> | developers |
-| double-check    | <!-- --> | <!-- --> | business   |
-| agent-ready     | <!-- --> | <!-- --> | developers |
-| review          | <!-- --> | <!-- --> | both       |
-| documentation   | <!-- --> | <!-- --> | business   |
-| communication   | <!-- --> | <!-- --> | business   |
-| release         | <!-- --> | <!-- --> | human      |
+<!-- Owner and Skill for design and agent-ready depend on the mode —
+     /configure fills them: full = developers running grill-with-docs →
+     to-spec and to-tickets → implement; standalone = outline and draft
+     from this package. All nine stages exist in both modes. -->
+
+| Canonical stage | Board column | Derived label | Owner | Skill |
+| --------------- | ------------ | ------------- | ----- | ----- |
+| triage          | <!-- --> | <!-- --> | maintainer | <!-- full: triage · standalone: by hand --> |
+| clarification   | <!-- --> | <!-- --> | business   | clarify |
+| design          | <!-- --> | <!-- --> | <!-- -->   | <!-- full: grill-with-docs → to-spec · standalone: outline --> |
+| double-check    | <!-- --> | <!-- --> | business   | double-check |
+| agent-ready     | <!-- --> | <!-- --> | <!-- -->   | <!-- full: to-tickets → implement · standalone: draft --> |
+| review          | <!-- --> | <!-- --> | both       | walkthrough |
+| documentation   | <!-- --> | <!-- --> | business   | document |
+| communication   | <!-- --> | <!-- --> | business   | communicate |
+| release         | <!-- --> | <!-- --> | human      | (close on release) |
 
 Stages marked "not used" are skipped in this repo; skills for them should
 tell the user the stage is not configured.
 
 ## The ping-pong
 
+<!-- /configure keeps the variant matching the mode and deletes the other. -->
+
+<!-- FULL MODE -->
 Business and developers alternate; each stage has one owner:
 
 1. **clarify** (business) — user requirements grilled and captured on the issue
@@ -53,6 +67,17 @@ Business and developers alternate; each stage has one owner:
 5. **walkthrough** (both) — hands-on acceptance of each PR
 6. **document** (business) — user docs from what actually shipped
 7. **communicate** (business) — release notes, announcements, marketing
+
+<!-- STANDALONE MODE -->
+Business decides, the agent produces; each stage has one owner:
+
+1. **clarify** (business) — the deliverable's requirements grilled and captured on the issue
+2. **outline** (business + agent) — audience, structure, sources, and position grilled; the outline published on the issue
+3. **double-check** (business) — the outline played back in plain language; misunderstandings bounce it to design
+4. **draft** (agent) — the document written on a branch, opened as a PR (`Refs #n`)
+5. **walkthrough** (both) — guided read-through acceptance of each PR
+6. **document** (business) — the shipped change captured for its audience
+7. **communicate** (business) — announcements and follow-through from the approved text
 
 ## Web skill pack
 

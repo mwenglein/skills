@@ -16,17 +16,23 @@ explain what is happening and why before doing it.
 
 Open by explaining, briefly and concretely:
 
-- The business team participates through **five web skills** built from
+- The business team participates through **six web skills** built from
   templates in this package, with this repo's facts (repo slug, board URL,
-  product name) baked in at build time: the four stage skills plus
-  `ask-mike`, the router that tells a business user where they are in the
-  process and which skill fits.
+  product name, setup contact) baked in at build time: the four stage
+  skills, `ask-mike` — the router that tells a business user where they
+  are in the process and which skill fits — and `setup`, the first-run
+  preflight that gets a user from nothing (no GitHub account, no
+  connector) to a verified connection.
 - The skills talk to GitHub through the chat product's **GitHub
   connector/MCP** — business users need GitHub accounts with issue
-  read/write on this repo, but never touch code or branches.
-- The ping-pong: business clarifies → developers design → business
-  double-checks → developers implement → both walk through → business
-  documents and communicates.
+  read/write on this repo, but never touch code or branches. Users who
+  lack an account or access get walked there by `setup`; be ready to
+  grant repo access when it sends them to you.
+- The ping-pong, per the mode in `docs/agents/collaboration.md`: **full**
+  — business clarifies → developers design → business double-checks →
+  developers implement → both walk through → business documents and
+  communicates. **Standalone** — the same loop with the agent in the
+  developers' seat: `outline` designs, `draft` produces.
 
 ## 2. Check prerequisites
 
@@ -72,11 +78,14 @@ org membership plus issue read/write on the repo is enough.
 
 End by giving the developer a short pilot to run with one business user:
 
+0. The business user runs `setup` first — it self-tests their GitHub
+   access and walks them from wherever they are (no account, no
+   connector, no repo access) to a verified connection
 1. Pick a real, fuzzy feature idea → "clarify this idea" (`clarify`) —
    issue appears in the clarification stage on the board
-2. Developers grill and spec it → business runs `double-check` on the
-   result
-3. After a feature ships: "what's waiting for documentation?" (`document`),
+2. The design stage runs (developers grill and spec it, or `outline` in
+   standalone mode) → business runs `double-check` on the result
+3. After the work ships: "what's waiting for documentation?" (`document`),
    then `communicate` one stage later
 4. Confirm every hop is visible on the board
 
