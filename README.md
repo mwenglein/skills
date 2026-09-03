@@ -84,6 +84,21 @@ mattpocock/skills via the skills CLI:
 | `configure` | developers | One-time setup wizard: maps the canonical stages to your board, writes the two config files, and picks the right token strategy — including the [personal-account ladder](skills/collaboration/configure/TOKENS.md) where fine-grained PATs can't reach user-owned boards. Ships `scripts/board-doctor.sh`, a read-only per-token capability probe |
 | `onboard-business` | developers | Builds the business team's web pack from your config and walks through provisioning |
 
+**Content & marketing skills** (`skills/collaboration/`) — a content-production
+pipeline for standalone repos that produce marketing content rather than
+software (board flow: triage → brief → draft → review → publish; see each
+skill's header). Designed alongside
+[gamecodeai/contentagent](https://github.com/gamecodeai/contentagent), but
+not repo-specific:
+
+| Skill | Owner | What it does |
+| --- | --- | --- |
+| `brainstorm` | business + agent | The widening counterpart to `clarify`: divergent rounds over angles, audiences, formats; lands survivors as triage-stage issues |
+| `scout` | agent | Open-internet research for a piece: competitors, keyword/trend signals, content landscape; posts a cited research note on the issue |
+| `greenlight` | both | Content review before publishing: claims verified against what actually shipped, voice, channel conventions, CTA, SEO — greenlight or bounce with specific notes |
+| `publish` | human (agent as scribe) | Per-channel publication walkthrough: artifacts prepared, human schedules, outcomes and URLs recorded; closes the issue on publication and loops back to the source issue |
+| `marketing-handover` | agent | Opens the "Announce: …" brief in the marketing repo when a dev issue reaches ready-to-communicate, and adds it to the marketing board's entry column |
+
 **Web skills** (`skills-web/`) — templates, built into self-contained
 uploads for the business team's chat product (currently Claude.ai Agent
 Skills):
