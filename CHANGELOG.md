@@ -1,5 +1,16 @@
 # mwenglein-skills
 
+## 0.6.0
+
+### Minor Changes
+
+- [`0433d76`](https://github.com/mwenglein/skills/commit/0433d768e1f49629f19d8a6946fa6437e481b5c3) Thanks [@mwenglein](https://github.com/mwenglein)! - Web browsing and analytics skills: `web-browse` (Tavily-powered live-web
+  search/extract/crawl/map through the user's account via MCP OAuth — the
+  research engine `scout` now uses), plus the Google analytics pair
+  `connect-analytics` (one-time GA4 + Search Console MCP setup against the
+  user's Google account) and `marketing-analytics` (topic opportunities,
+  keyword analysis, past-post performance, tracking-loop checks).
+
 ## 0.5.0
 
 ### Minor Changes

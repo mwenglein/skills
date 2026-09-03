@@ -1,6 +1,6 @@
 {
   "name": "mwenglein-skills",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "description": "Agent skills that integrate business users into agentic development - the collaboration layer around mattpocock/skills",
   "repository": {
