@@ -37,6 +37,11 @@ question produces notes, not evidence.
 
 ## Method
 
+- **Engine**: use the `web-browse` skill's Tavily tools when available —
+  `tavily_search` for demand signals, `tavily_extract` for primary-source
+  pages (competitor pricing, changelogs, docs), `tavily_map`/`tavily_crawl`
+  only with a stated page budget. Fall back to built-in search/fetch when
+  Tavily is not connected.
 - Plan the queries before running them; say what you are searching and why
 - **Cite every claim**: URL plus access date. No URL, no claim.
 - Separate **facts** (what a source says) from **interpretation** (what you

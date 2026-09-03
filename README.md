@@ -98,6 +98,9 @@ not repo-specific:
 | `greenlight` | both | Content review before publishing: claims verified against what actually shipped, voice, channel conventions, CTA, SEO — greenlight or bounce with specific notes |
 | `publish` | human (agent as scribe) | Per-channel publication walkthrough: artifacts prepared, human schedules, outcomes and URLs recorded; closes the issue on publication and loops back to the source issue |
 | `marketing-handover` | agent | Opens the "Announce: …" brief in the marketing repo when a dev issue reaches ready-to-communicate, and adds it to the marketing board's entry column |
+| `web-browse` | agent | Live-web browsing via the user's Tavily account (MCP + OAuth): search beyond Google listings, full-page extract, site crawl and map — the engine behind `scout` |
+| `connect-analytics` | agent (setup) | One-time GA4 + Search Console connection: official Google analytics-mcp plus a GSC MCP server against the user's Google account (OAuth, read-only) |
+| `marketing-analytics` | agent | Reads GA4 + GSC to pick topics, analyze keyword opportunities, score past-post performance, and keep the tracking loop honest |
 
 **Web skills** (`skills-web/`) — templates, built into self-contained
 uploads for the business team's chat product (currently Claude.ai Agent
