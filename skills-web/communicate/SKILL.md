@@ -5,11 +5,34 @@ description: Draft release notes, announcements, and marketing copy for document
 
 Draft the outward-facing communication for features that are already documented and now wait in the **{{COL_COMMUNICATION}}** column of the board — the last stop before **{{COL_RELEASE}}**.
 
-If the GitHub connector cannot reach `{{REPO}}` (not connected, access denied, repository not found), stop and run the **setup** skill — don't improvise around a broken connection.
+## Which board are we in?
+
+The user may work across several products' boards. Resolve the active one
+before doing anything, in this order — never ask while a rung still
+answers:
+
+1. **Named in the message** — a board or issue URL, an issue number on a
+   known product, or the product's name. A URL always wins: the repository
+   it points to *is* the answer.
+2. **Already resolved in this conversation** — keep it. If the user
+   switches mid-conversation, say so explicitly ("switching to <product> —
+   the cards we touch now live there").
+3. **The default** — `{{REPO}}`, the {{PRODUCT_NAME}} board. If it's the
+   only product they've joined, state it in one line and move on.
+4. **Ask** — last resort: search the connector for the repositories they
+   have joined (each carries a pinned issue labelled `pipeline-home`),
+   present the short names — never raw repository slugs — and let them
+   pick.
+
+Whatever the answer, if the connector cannot reach the resolved repository
+(not connected, access denied, repository not found), stop and run the
+**setup** skill — don't improvise around a broken connection. A product
+they haven't joined yet is the **join** skill's job — point them there
+rather than guessing at an unjoined board.
 
 ## Finding the queue
 
-List open issues on `{{REPO}}` with the label `{{LABEL_COMMUNICATION}}` through the GitHub connector. That label is an automatically maintained mirror of the board column — reading it is fine, editing it is not.
+List open issues on the resolved repository with the label `{{LABEL_COMMUNICATION}}` through the GitHub connector. That label is an automatically maintained mirror of the board column — reading it is fine, editing it is not.
 
 If the user names a specific issue, work that one; otherwise show the queue and let them pick.
 
