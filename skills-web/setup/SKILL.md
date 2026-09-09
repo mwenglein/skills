@@ -66,11 +66,16 @@ self-test — the repository name and, say, the title of the newest issue —
 and link the [board]({{BOARD_URL}}), which is where they'll always see
 whose move it is.
 
-Then point them onward:
+Then point them onward — suggest, don't start:
 
 - **ask-mike** — tells you where you are in the process and which skill
   fits; run it whenever unsure.
-- **clarify** — the natural first skill when you bring an idea or a request.
+- **new-issue** — the natural first skill when you bring an idea, a
+  problem, or a whole list. Hand them the shape of the prompt: _"new
+  issue: <what's on your mind, in your own words>"_.
+- **join** — when they mention a *second* product or board: it connects
+  another repository the same way, tests access, and records their
+  preferences there. One run per product, never re-run unless it breaks.
 
 One habit worth stating: if any skill ever hits a GitHub error, the fix
 lives here — run **setup** again rather than working around the error.

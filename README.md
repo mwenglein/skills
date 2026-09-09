@@ -109,6 +109,8 @@ Skills):
 | Skill | Stage | What it does |
 | --- | --- | --- |
 | `setup` | first run | Preflight for a completely new user: self-tests GitHub access through the connector and fixes it step by step — account creation, connector, repo invitation |
+| `join` | once per product | Multi-product participation: connects another repository that runs the pipeline — tests access, verifies it via the repo's pinned `pipeline-home` issue, records the user's preferences there |
+| `new-issue` | intake | The front door: slices what the user brings into right-sized issues (one topic may split, a pasted list may merge), checks duplicates, lands everything in triage, then hands into `clarify` |
 | `ask-mike` | any | The business-side `ask-matt`: routes a business user to the right skill and explains whose move it is at each stage; sends broken connections to `setup` |
 | `clarify` | Clarification | Same grilling, adapted to the GitHub connector; creates/annotates the issue |
 | `double-check` | Double-check | Plays the technical design back in business language; hunts misunderstandings before implementation |
@@ -126,6 +128,19 @@ Only `/configure` knows which mode a repo is in; every other skill reads
 the stage mapping it wrote. Start business-only today, add developers
 later: install matt's pack, re-run `/configure`, and the middle stages
 change owners while the board columns keep their names.
+
+### Several products, one business user
+
+A business user can take part in many products without repeating
+themselves. Each configured repository carries a pinned, labelled
+**home issue** (`pipeline-home`) — written by `/configure`, read by the
+web-side `join` skill as the compatibility proof, and holding the user's
+preferences for that product in its comments. No secrets, no code access —
+issue read/write is enough. Every web skill resolves the active product
+from the conversation itself: a pasted link, an issue number, or a product
+name wins; the pack's default board applies when it's the only product;
+and only as a last resort does the skill ask — with short names, never
+repository slugs.
 
 ## Install
 

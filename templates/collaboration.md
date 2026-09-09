@@ -81,8 +81,15 @@ Business decides, the agent produces; each stage has one owner:
 
 ## Web skill pack
 
-The business team's web skills (ask-mike, clarify, double-check, document,
-communicate) are built from this repo's
+The business team's web skills (ask-mike, new-issue, join, clarify,
+double-check, document, communicate) are built from this repo's
 `skills-web.config.json` by <!-- package path, e.g. vendor/skills -->
 `/scripts/build-web-skills.sh`. Rebuild and re-upload after any config or
 package update (`/onboard-business` walks through it).
+
+## Home issue
+
+A pinned issue labelled `pipeline-home` (created by /configure) records
+this repo's product name, board URL, mode, and setup contact. Business
+users' `join` skill reads it as the proof this repo runs the pipeline, and
+their preferences for this product live in its comments.

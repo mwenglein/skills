@@ -129,6 +129,19 @@ Add (or update) a `### Collaboration skills` line in the repo's `AGENTS.md`
 or `CLAUDE.md` (edit whichever exists; never create a second one) pointing
 to `docs/agents/collaboration.md`.
 
+Then create the repo's **home issue** — the mechanical proof, on the
+business side, that this repository runs the pipeline (the web-side
+`join` skill treats its existence as the compatibility check):
+
+- **Title**: `Pipeline home — <product name>`
+- **Label**: `pipeline-home` (create the label if missing), and **pin** the
+  issue
+- **Body**: the product's short name, the repository slug, the board URL,
+  the mode (full or standalone), and the setup contact — the same facts
+  the web-pack config carries
+- On a re-run: update the existing home issue instead of creating a twin,
+  and note what changed in a comment
+
 Regardless of the token rung chosen, bake the process-safety rules into
 whatever automation exists (details in [TOKENS.md](TOKENS.md)): `Refs #n`
 never `Closes #n` in PR bodies, merge-close rescue via Issues write,

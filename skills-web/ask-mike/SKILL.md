@@ -12,12 +12,34 @@ side's router (engineering's equivalent, where that pack is installed, is
 your move, and which skill to run.
 
 When the user describes their situation, route them using the map below —
-and when it helps, look up the actual state of their issue on `{{REPO}}`
-through the GitHub connector rather than answering in the abstract.
+and when it helps, look up the actual state of their issue on the resolved
+repository through the GitHub connector rather than answering in the
+abstract.
 
-If the GitHub connector cannot reach `{{REPO}}` (not connected, access
-denied, repository not found), stop and run the **setup** skill — don't
-improvise around a broken connection.
+## Which board are we in?
+
+The user may work across several products' boards. Resolve the active one
+before routing, in this order — never ask while a rung still answers:
+
+1. **Named in the message** — a board or issue URL, an issue number on a
+   known product, or the product's name. A URL always wins: the repository
+   it points to *is* the answer.
+2. **Already resolved in this conversation** — keep it. If the user
+   switches mid-conversation, say so explicitly ("switching to <product> —
+   the cards we touch now live there").
+3. **The default** — `{{REPO}}`, the {{PRODUCT_NAME}} board. If it's the
+   only product they've joined, state it in one line and move on.
+4. **Ask** — last resort: search the connector for the repositories they
+   have joined (each carries a pinned issue labelled `pipeline-home`),
+   present the short names — never raw repository slugs — and let them
+   pick.
+
+Whatever the answer, if the connector cannot reach the resolved repository
+(not connected, access denied, repository not found), stop and run the
+**setup** skill — don't improvise around a broken connection. A product
+they haven't joined yet is the **join** skill's job — point them there
+rather than guessing at an unjoined board. Everything below ("the board",
+the columns) refers to the resolved product's board.
 
 ## The main flow: idea → shipped feature, from your seat
 
@@ -69,11 +91,16 @@ Off the main flow entirely:
 - **"Am I set up?" / first time here / GitHub errors** — run **setup**. It
   self-tests your GitHub access and fixes the connection step by step,
   even if you don't have a GitHub account yet.
-- **"Something is broken" / "I have a request"** — just create an issue on
-  `{{REPO}}` describing what you saw or need, in your own words. It lands
-  in triage automatically; if it needs your requirements input, it will
-  come back to you in {{COL_CLARIFICATION}} and `clarify` takes it from
-  there.
+- **"I also work on <another product>" / "add another board"** — run
+  **join**. It connects another repository that runs the same pipeline and
+  records your preferences there; after that, name the product or paste a
+  link and every skill follows you there.
+- **"Something is broken" / "I have a request" / "here's a list of
+  things"** — run **new-issue**. It slices what you bring into
+  right-sized issues (one topic may split into several, a list may merge
+  into one), checks for duplicates, and lands everything in triage. When
+  an issue needs your requirements input, it comes back to you in
+  {{COL_CLARIFICATION}} and `clarify` takes it from there.
 - **"What's the status of X?"** — ask here; the issue's board column *is*
   the status, and it can be looked up for you along with the latest
   comments.
@@ -83,10 +110,14 @@ Off the main flow entirely:
   instead.
 - **"Which of these applies to me?"** — this skill. You're already here.
 
-## Two rules worth keeping
+## Three rules worth keeping
 
 1. **Facts are the agent's job, decisions are yours.** In every skill here,
    you should never be asked to look something up — only to decide.
 2. **The board is the source of truth.** When in doubt, open
    [the board]({{BOARD_URL}}) — the column answers "whose move is it?"
    better than any meeting.
+3. **You never need to memorize anything.** Every skill ends by telling
+   you your next move and the exact words to say when you're ready — one
+   line, one issue, a fresh session. If you've lost the thread anyway,
+   that's what this skill is for.
